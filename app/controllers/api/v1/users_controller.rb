@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    protect_from_forgery with: :exception
+
     def create
         user = User.create(user_params)
         if user.valid?
@@ -12,7 +12,7 @@ class Api::V1::UsersController < ApplicationController
    private
    
    def user_params
-         params.require(:user).permit(:username, :email, :password)
+         params.require(:user).permit(:username, :password, :email)
    end
 end
 
