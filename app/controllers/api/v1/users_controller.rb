@@ -1,6 +1,10 @@
 class Api::V1::UsersController < ApplicationController
     skip_before_action :authorized, only: [:create]
 
+    def profile
+        render json: user
+    end
+
     def create
         user = User.create(user_params)
         if user.valid?
@@ -17,11 +21,3 @@ class Api::V1::UsersController < ApplicationController
          params.require(:user).permit(:username, :password, :email)
    end
 end
-
-{
-    "user": {
-      "username": "Gilloh",
-      "email": "mutai@gmail.com",
-      "password": "123456"
-    }
-  }
